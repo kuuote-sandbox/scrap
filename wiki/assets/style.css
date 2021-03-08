@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  background-color: #c0c0ff;
+}
+nav {
+  color: #ffffff;
+  background: linear-gradient(to left, #80ff80b0, #8080ffb0);
+
+  /* sticky */
+  position: sticky;
+  top: 0px;
+}
+nav.unsent {
+  background: linear-gradient(to left, #cc2b5eb0, #753a88b0);
+}
+nav a {
+  background-color: inherit;
+}
+.linklike {
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: none;
+}
+a {
+  color: inherit;
+  background-color: #e0e0ff;
+}
+.inline-code {
+  /* Slackのパクり */
+  background-color: #f6f6f6;
+  color: #e01e5a;
+  font-family: monospace;
+}
+.page {
+  margin:  10px; /* 要素の外側 */
+  padding: 10px; /* 要素の内側 */
+  color: #4040ff;
+  background-color: #ffffff;
+  /* 日本語と英語で高さが異なるので統一する
+   * see https://coliss.com/articles/build-websites/operation/css/220.html
+   */
+  line-height: 150%;
+}
+/* blockにしておくことによりmargin-left分の隙間が確保される by ScrapboxのCSS */
+.text {
+  display: block;
+  min-height: 1em; /* 空の要素にも高さを与える */
+  overflow-wrap: break-word; /* 単語を折り返す */
+  white-space: break-spaces; /* 空白を折り返す */
+}
+.dummy {
+  visibility: hidden;
+}
+.notation {
+  position: absolute;
+  width: 0px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.cursor-line .notation {
+  position: inherit;
+  width: auto;
+  visibility: visible;
+  pointer-events: auto;
+}
+/* カーソル行のリンクを無効化 */
+.cursor-line a {
+  pointer-events: none;
+}
+/* インデントはScrapboxのまんま */
+.indent {
+  position: absolute;
+}
+.indent .space {
+  display: inline-block;
+  width: 1.5em;
+  height: 1em;
+}
+.indent .dot {
+  position: absolute;
+  right: 9px;
+  top: 0.55em; /* 配置の兼ね合いでこれはいじった */
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4040ff;
+}
+.cursor {
+  position: absolute;
+}
+.input {
+  background: inherit; /* 背景を合わせる */
+  border: none; /* 必要の無い枠を消す */
+  color: inherit; /* 色も合わせる */
+  cursor: text; /* カーソルの形をIにする */
+  font: inherit; /* 大本のフォントを使う(textarea独自のフォントになるのを防ぐ) */
+  outline: none; /* 必要の無い枠(フォーカス)を消す */
+  overflow: hidden; /* スクロールバーを出さない */
+  padding: 0;
+  pointer-events: none; /* カーソルのイベントを下に流す */
+  position: absolute; /* 絶対配置 */
+  resize: none; /* リサイズを禁止する(リサイズコントロールのホバーでカーソルの形が変わってしまうので) */
+}
+/* インデントをカラフルにする
+ * nth-childを使うと無限に繰り返せる
+ * 7はハイライトの数、2はインデント数1の時のdotの位置
+ */
+
+.indent .dot:nth-child(7n+2) {
+  background-color: hsl(0, 100%, 80%);
+}
+.indent .dot:nth-child(7n+3) {
+  background-color: hsl(30, 100%, 80%);
+}
+.indent .dot:nth-child(7n+4) {
+  background-color: hsl(200, 100%, 60%);
+}
+.indent .dot:nth-child(7n+5) {
+  background-color: hsl(300, 100%, 80%);
+}
+.indent .dot:nth-child(7n+6) {
+  background-color: hsl(260, 100%, 80%);
+}
+.indent .dot:nth-child(7n+7) {
+  background-color: hsl(150, 100%, 45%);
+}
+.indent .dot:nth-child(7n+8) {
+  background-color: hsl(180, 100%, 80%);
+}

@@ -1,0 +1,10 @@
+body {
+ font-family: "JF Dot jiskan16-2000";
+}
+textarea {
+ background-color: white !important;
+}
+Project内に書いたCSSを直接読み込むことができる機能です
+例えばこのページには上に書いてあるCSSが適用されています
+ JF Dot jiskan16-2000というフォントが存在していれば適用され
+ IMEによる入力中に出てくるtextareaの背景が白く塗り潰されます

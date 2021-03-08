@@ -1,0 +1,5 @@
+#!/bin/bash -u
+
+cd $(dirname $0)
+./build || exit 1
+go run -v . "$@"

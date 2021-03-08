@@ -1,0 +1,57 @@
+#!/bin/bash -u
+
+sudo rm -rf /tmp/test
+mkdir -p /tmp/test/zatsu
+go run -v . $(dirname $(realpath $0))/../../../memos/scrap /tmp/test/zatsu
+mkdir -p /tmp/test/scrap_issue
+rsync -ac --delete-before ../issue/ /tmp/scrap_issue_origin/
+/tmp/scrap_issue_origin/undone
+go run -v . /tmp/scrap_issue_origin /tmp/test/scrap_issue
+cat > /tmp/test/main.go << EOS
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	fmt.Println("Listen start at localhost:8000")
+	if err := http.ListenAndServe(":8000", http.FileServer(http.Dir("."))); err != nil {
+		panic(err)
+	}
+}
+EOS
+cd /tmp/test
+cat > /tmp/test/index.html << EOS
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<meta name="MobileOptimized" content="width">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="viewport" content="width=device-width">
+  <style>
+    li {
+      /* 日本語と英語で高さが異なるので統一する
+       * see https://coliss.com/articles/build-websites/operation/css/220.html
+       */
+      line-height: 137%;
+    }
+    ul {
+      /* バレットと文章の間が無駄に広いので埋める */
+      padding-inline-start: 1em; /* 1em == 100% */
+    }
+    a {
+      color: #4444ff;
+      background-color: #e0e0ff;
+    }
+  </style>
+</head>
+<body>
+<ul>
+$(ls -1p | sed -E -e 's;(.*);<li><a href=\1>\1</a></li>;')
+</ul>
+</body>
+</html>
+EOS
+go run main.go
