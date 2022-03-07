@@ -15,8 +15,8 @@ function mountPage() {
 }
 
 // bfcache対策としてpageshowイベントのタイミングでfetchする
-window.addEventListener("pageshow", route);
+globalThis.addEventListener("pageshow", route);
 
-window.addEventListener("DOMContentLoaded", mountPage);
+globalThis.addEventListener("DOMContentLoaded", mountPage);
 
-window.addEventListener("popstate", route);
+globalThis.addEventListener("popstate", route);
