@@ -1,3 +1,7 @@
+/// <reference no-default-lib="true" />
+/// <reference lib="esnext" />
+/// <reference lib="dom" />
+
 import { editor } from "./editor.ts";
 import { route } from "./router.ts";
 

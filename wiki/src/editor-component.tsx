@@ -1,11 +1,10 @@
-import React from "./react.js";
-
-const {
+import {
+  React,
   useEffect,
   useLayoutEffect,
   useMemo,
   useState,
-} = React;
+} from "./deps.tsx";
 
 import type { Cursor } from "./model.d.ts";
 import { Editor } from "./editor.ts";
@@ -340,9 +339,9 @@ export const EditorComponent: React.FC<{ editor: Editor }> = ({ editor }) => {
 
   const linesView = useMemo(
     () =>
-      lines.map((l, i) =>
+      lines.map((l, i) => (
         <LineComponent cursorLine={i === cursor.line} line={l} index={i} />
-      ),
+      )),
     [lines, cursor.line],
   );
 
@@ -350,10 +349,12 @@ export const EditorComponent: React.FC<{ editor: Editor }> = ({ editor }) => {
   //
   const project = window.location.pathname.split("/")[2];
   const css = project
-    ? (<link
-      rel="stylesheet"
-      href={`/api/page/${project}/UserCSS`}
-    />)
+    ? (
+      <link
+        rel="stylesheet"
+        href={`/api/page/${project}/UserCSS`}
+      />
+    )
     : null;
 
   return (

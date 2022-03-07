@@ -1,4 +1,4 @@
-import React from "./react.js";
+import { React } from "./deps.tsx";
 import { openPage } from "./router.ts";
 import type { Character, LinkNotation } from "./model.d.ts";
 

@@ -1,5 +1,5 @@
-import type { MutableRefObject } from "./react.js";
-import { useRef } from "./react.js";
+import type { MutableRefObject } from "./deps.tsx";
+import { useRef } from "./deps.tsx";
 
 export const generateID = (() => {
   let id = 0;

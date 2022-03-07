@@ -1,4 +1,4 @@
-import React from "./react.js";
+import { React } from "./deps.tsx";
 import { generateID } from "./util.ts";
 import { getLinkModel } from "./link.ts";
 import type { Character, Line, Model } from "./model.d.ts";
@@ -8,17 +8,21 @@ const nodes = new Map([["`", "`"], ["[", "]"]]);
 const mapToDOM = (model: Model): React.ReactElement => {
   switch (model.type) {
     case "char":
-      return (<span
-        className={`c-${model.index} ${model.notationChar ? "notation" : ""}`}
-      >
-        {model.char}
-      </span>);
+      return (
+        <span
+          className={`c-${model.index} ${model.notationChar ? "notation" : ""}`}
+        >
+          {model.char}
+        </span>
+      );
     case "anchor":
-      return (<a href={model.href} onClick={model.handler}>
-        {model.model.map(mapToDOM)}
-      </a>);
+      return (
+        <a href={model.href} onClick={model.handler}>
+          {model.model.map(mapToDOM)}
+        </a>
+      );
     case "quote":
-      return (<span className="inline-code">{model.model.map(mapToDOM)}</span>);
+      return <span className="inline-code">{model.model.map(mapToDOM)}</span>;
   }
 };
 
@@ -84,7 +88,7 @@ export const parseText = (text: string) => {
       <span className="indent">
         {Array.from(
           Array(indent),
-          (_, i) => (<span className={`space c-${i}`}></span>),
+          (_, i) => <span className={`space c-${i}`}></span>,
         )}
         {indent === 0 ? null : <span className={`dot level${indent}`} />}
       </span>
