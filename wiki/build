@@ -2,5 +2,5 @@
 
 # esbuild assets/wiki.jsx --outfile=assets/wiki.js
 cd $(dirname $0)
-deno bundle --no-check -c tsconfig.json src/wiki.tsx assets/wiki.js
-deno bundle -c tsconfig.json src/wiki.tsx assets/wiki.js &
+deno bundle src/wiki.tsx assets/wiki.js
+deno bundle src/wiki.tsx assets/wiki.js &

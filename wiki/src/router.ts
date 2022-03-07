@@ -1,3 +1,7 @@
+/// <reference no-default-lib="true" />
+/// <reference lib="esnext" />
+/// <reference lib="dom" />
+
 import { fetchPages, fetchProjects } from "./project.ts";
 import { fetchPage } from "./page.ts";
 

@@ -1,5 +1,8 @@
-import React from "./react.js";
-import ReactDOM from "./react-dom.js";
+/// <reference no-default-lib="true" />
+/// <reference lib="esnext" />
+/// <reference lib="dom" />
+
+import { React, ReactDOM } from "./deps.tsx";
 import type { EditAction } from "./action.d.ts";
 import type { Line } from "./model.d.ts";
 import { Sender } from "./sender.ts";
